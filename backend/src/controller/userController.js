@@ -4,9 +4,8 @@ const userServ = require("../service/userService");
 
 const getAllUser = async (req, res) => {
     // return res.status(200).json({ message: 'controller esta funcionando' })
-    const user = await userServ.getAllUser();
-    // return res.status(200).json(user);
-    return user;
+    await userServ.getAllUser();
+    return res.status(200).json(user);
 };
 
 const createUser = async (req, res) => {
