@@ -4,7 +4,7 @@ const userServ = require("../service/userService");
 
 const getAllUser = async (req, res) => {
     // return res.status(200).json({ message: 'controller esta funcionando' })
-    await userServ.getAllUser();
+    const user = await userServ.getAllUser();
     return res.status(200).json(user);
 };
 
