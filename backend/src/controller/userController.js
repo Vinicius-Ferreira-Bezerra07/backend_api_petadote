@@ -2,17 +2,17 @@
 // const userServ = require('../')
 const userServ = require("../service/userService");
 
-const getAllUser = async (req, res) => {
+const getAllUser = async (_req, res) => {
     // return res.status(200).json({ message: 'controller esta funcionando' })
     const user = await userServ.getAllUser();
     return res.status(200).json(user);
 };
 
 const createUser = async (req, res) => {
-    const addUser = await userRepo.createUser(user);
+    const addUser = await userServ.createUser(req.body);
 
-    return res.status(201).json({ mensagem: "Cadastrado com sucesso!" });
-    // return res.status(201).json({ mensagem: 'OK' })
+    return res.status(201).json(addUser);
+    // return res.status(201).json(req.body);
 };
 
 const removeUser = () => {};
