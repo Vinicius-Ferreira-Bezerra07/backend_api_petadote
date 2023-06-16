@@ -9,21 +9,22 @@ const getAllUser = async () => {
 };
 
 const createUser = async (user) => {
-    const { name, email, endereco, cpf, datan, telefone, password } = user;
+    const { nome, email, endereco, cpf, data_nascimento, telefone, senha } =
+        user;
 
     const query =
         "INSERT INTO user (nome, email, endereco, cpf, data_nascimento, telefone, senha) VALUES (?, ?, ?, ?, ?, ?, ?)";
     const [createUser] = await connection.execute(query, [
-        name,
+        nome,
         email,
         endereco,
         cpf,
-        datan,
+        data_nascimento,
         telefone,
-        password,
+        senha,
     ]);
 
-    return createUser;
+    return { insertId: createUser.insertId };
 };
 
 const removeUser = async (id) => {};
