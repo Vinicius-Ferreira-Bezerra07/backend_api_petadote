@@ -8,6 +8,7 @@ const getAllUser = async () => {
     return user;
 };
 
+// metodo para cadastrar os usuarios no banco
 const createUser = async (user) => {
     const { nome, email, endereco, cpf, data_nascimento, telefone, senha } =
         user;
@@ -27,8 +28,15 @@ const createUser = async (user) => {
     return { insertId: createUser.insertId };
 };
 
-const removeUser = async (id) => {};
+// metodo para remocao de usuarios do banco
+const removeUser = async (id) => {
+    const query = "DELETE FROM user WHERE id_user = ?";
 
+    const removeUser = await connection.execute(query, [id]);
+    return removeUser;
+};
+
+// matodo para atualizar dados de usuario no banco
 const updateUser = async (id) => {};
 
 // exporta os restornos das funções definias aqui

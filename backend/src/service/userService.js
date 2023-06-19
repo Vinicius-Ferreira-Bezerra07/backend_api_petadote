@@ -13,7 +13,15 @@ const createUser = async (user) => {
     return addUser;
 };
 
+const removeUser = async (id) => {
+    const remove = userRepo.removeUser(id);
+
+    return remove;
+};
+
 module.exports = {
     getAllUser,
     createUser,
+    removeUser,
+    // updateUser,
 };
