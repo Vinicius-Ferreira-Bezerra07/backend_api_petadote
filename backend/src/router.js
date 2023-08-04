@@ -4,6 +4,7 @@ const express = require("express");
 
 // importar os controllers e Middleweres
 const userControl = require("./controller/userController");
+const petControl = require("./controller/petController");
 const userMiddleweres = require("./middlewares/userMiddlewares");
 
 // criar o arquivo e rotas
@@ -18,6 +19,11 @@ router.get("/", (req, res) =>
 router.get("/user", userControl.getAllUser);
 router.post("/user", userMiddleweres.validarCreateUser, userControl.createUser);
 router.delete("/user/:id", userControl.removeUser);
+
+// Rotas para pets
+router.get("/pet", petControl.getAllPet);
+router.post("/pet", petControl.createPet);
+router.delete("/pet/:id_pet", petControl.removePet);
 
 // exportar as rotas
 module.exports = router;

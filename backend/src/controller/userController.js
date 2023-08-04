@@ -1,6 +1,6 @@
 // importar a camada de Serviço
 // const userServ = require('../')
-const { response } = require("express");
+// const { response } = require("express");
 const userServ = require("../service/userService");
 
 const getAllUser = async (_req, res) => {
@@ -20,7 +20,7 @@ const removeUser = async (req, res) => {
     const { id } = req.params;
 
     await userServ.removeUser(id);
-    return response.status(204).json();
+    return res.status(204).json();
 };
 
 const updateUser = () => {};
