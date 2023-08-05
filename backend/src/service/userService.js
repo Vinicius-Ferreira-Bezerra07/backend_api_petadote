@@ -19,9 +19,16 @@ const removeUser = async (id) => {
     return remove;
 };
 
+const validarUser = async (login) => {
+    const dados = await userRepo.validarUser(login);
+
+    return dados;
+};
+
 module.exports = {
     getAllUser,
     createUser,
     removeUser,
     // updateUser,
+    validarUser,
 };

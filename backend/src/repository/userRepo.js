@@ -39,10 +39,22 @@ const removeUser = async (id) => {
 // matodo para atualizar dados de usuario no banco
 const updateUser = async (id) => {};
 
+// metodo para validar o login do usuario
+const validarUser = async (login) => {
+    const { email } = login;
+
+    const query = "SELECT email, senha FROM user WHERE email = (?)";
+    const [validarUser] = await connection.execute(query, [email]);
+
+    console.log(validarUser);
+    return validarUser;
+};
+
 // exporta os restornos das funções definias aqui
 module.exports = {
     getAllUser,
     createUser,
     removeUser,
     updateUser,
+    validarUser,
 };

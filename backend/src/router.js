@@ -20,6 +20,9 @@ router.get("/user", userControl.getAllUser);
 router.post("/user", userMiddleweres.validarCreateUser, userControl.createUser);
 router.delete("/user/:id", userControl.removeUser);
 
+// Validação de Login
+router.post("/user/validate", userControl.validateUser);
+
 // Rotas para pets
 router.get("/pet", petControl.getAllPet);
 router.post("/pet", petControl.createPet);
