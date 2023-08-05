@@ -28,20 +28,28 @@ const updateUser = () => {};
 const validateUser = async (req, res) => {
     const dados = await userServ.validarUser(req.body);
     const { email, senha } = req.body;
-    // const { email, senha } = dados;
+    const { emailBd = email, senhaBd = senha } = dados;
 
-    // console.log(dados.values.email);
-    // console.log(req.body);
+    // console.log(email, senha);
+    // console.log(emailBd, senhaBd);
 
-    // console.log(dados == req.body);
-    if (req.body == dados) {
-        return res
-            .status(200)
-            .json({ msg: "Sucesso na validação", validation: "true" });
+    console.log(email == emailBd);
+    console.log(senha == senhaBd);
+
+    if (email == emailBd) {
+        if (senha == senhaBd) {
+            return res
+                .status(200)
+                .json({ msg: "Sucesso na validação", validation: "true" });
+        } else {
+            return res
+                .status(400)
+                .json({ Erro: "Senha invalido.", validation: "false" });
+        }
     } else {
         return res
             .status(400)
-            .json({ Erro: "Email ou senha invalidos.", validation: "false" });
+            .json({ Erro: "Email invalido.", validation: "false" });
     }
 };
 

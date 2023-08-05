@@ -46,7 +46,7 @@ const validarUser = async (login) => {
     const query = "SELECT email, senha FROM user WHERE email = (?)";
     const [validarUser] = await connection.execute(query, [email]);
 
-    console.log(validarUser);
+    // console.log(validarUser);
     return validarUser;
 };
 
