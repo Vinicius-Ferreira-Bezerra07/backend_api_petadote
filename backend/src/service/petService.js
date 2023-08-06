@@ -13,14 +13,20 @@ const createPet = async (pet) => {
 };
 
 const removePet = async (id) => {
-    console.log("1.2");
     const remove = petRepo.removePet(id);
-    console.log("2.2");
+
     return remove;
+};
+
+const findPetIdUser = async (id) => {
+    const pets = petRepo.findPetIdUser(id);
+
+    return pets;
 };
 
 module.exports = {
     getAllPet,
     createPet,
     removePet,
+    findPetIdUser,
 };

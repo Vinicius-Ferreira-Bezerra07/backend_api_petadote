@@ -49,11 +49,19 @@ const removePet = async (id_pet) => {
 
 const updatePet = async (id) => {};
 
+const findPetIdUser = async (id) => {
+    const pets = await connection.execute(
+        "SELECT * FROM pet WHERE id_user = (?)",
+        [id]
+    );
+};
+
 module.exports = {
     getAllPet,
     createPet,
     removePet,
     updatePet,
+    findPetIdUser,
 };
 
 // id_pet int NOT NULL AUTO_INCREMENT,

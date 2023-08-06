@@ -43,11 +43,22 @@ const updateUser = async (id) => {};
 const validarUser = async (login) => {
     const { email } = login;
 
-    const query = "SELECT email, senha FROM user WHERE email = (?)";
+    const query = "SELECT id_user, email, senha FROM user WHERE email = (?)";
     const [validarUser] = await connection.execute(query, [email]);
 
-    // console.log(validarUser);
+    const { id_user } = validarUser;
+    console.log(id_user);
+
     return validarUser;
+};
+
+const findById = async (id) => {
+    const [user] = await connection.execute(
+        "SELECT * FROM user WHERE id_user = (?)",
+        [id]
+    );
+
+    return user;
 };
 
 // exporta os restornos das funções definias aqui
@@ -57,4 +68,18 @@ module.exports = {
     removeUser,
     updateUser,
     validarUser,
+    findById,
 };
+
+// CREATE TABLE
+//     user (
+//         id_user int NOT NULL AUTO_INCREMENT,
+//         nome varchar(255) NOT NULL,
+//         email varchar(255) NOT NULL,
+//         endereco int NOT NULL,
+//         cpf VARCHAR(11) NOT NULL,
+//         data_nascimento DATE NOT NULL,
+//         telefone VARCHAR(14) NOT NULL,
+//         senha VARCHAR(16) NOT NULL,
+//         PRIMARY KEY (id_user)
+//     );

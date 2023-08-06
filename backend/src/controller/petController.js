@@ -16,19 +16,27 @@ const createPet = async (req, res) => {
 };
 
 const removePet = async (req, res) => {
-    console.log("1.1");
     const { id_pet } = req.params;
 
     await petServ.removePet(id_pet);
-    console.log("2.1");
+
     return res.status(204).json();
 };
 
 const updatePet = () => {};
+
+const findPetIdUser = (req, res) => {
+    const { id } = req.params;
+
+    const pets = petServ.findPetIdUser(id);
+
+    return res.status(200).json(pets);
+};
 
 module.exports = {
     getAllPet,
     createPet,
     removePet,
     updatePet,
+    findPetIdUser,
 };

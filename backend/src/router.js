@@ -19,6 +19,7 @@ router.get("/", (req, res) =>
 router.get("/user", userControl.getAllUser);
 router.post("/user", userMiddleweres.validarCreateUser, userControl.createUser);
 router.delete("/user/:id", userControl.removeUser);
+router.get("/user/findid/:id", userControl.findById);
 
 // Validação de Login
 router.post("/user/validate", userControl.validateUser);
@@ -27,6 +28,7 @@ router.post("/user/validate", userControl.validateUser);
 router.get("/pet", petControl.getAllPet);
 router.post("/pet", petControl.createPet);
 router.delete("/pet/:id_pet", petControl.removePet);
+router.get("/pet/findiduser/:id", petControl.findPetIdUser);
 
 // exportar as rotas
 module.exports = router;

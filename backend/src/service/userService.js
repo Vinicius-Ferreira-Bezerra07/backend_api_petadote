@@ -25,10 +25,17 @@ const validarUser = async (login) => {
     return dados;
 };
 
+const findById = async (id) => {
+    const user = await userRepo.findById(id);
+
+    return user;
+};
+
 module.exports = {
     getAllUser,
     createUser,
     removeUser,
     // updateUser,
     validarUser,
+    findById,
 };

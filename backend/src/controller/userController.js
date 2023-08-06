@@ -28,19 +28,17 @@ const updateUser = () => {};
 const validateUser = async (req, res) => {
     const dados = await userServ.validarUser(req.body);
     const { email, senha } = req.body;
-    const { emailBd = email, senhaBd = senha } = dados;
+    const { id_user, emailBd = email, senhaBd = senha } = dados;
 
-    // console.log(email, senha);
-    // console.log(emailBd, senhaBd);
-
-    console.log(email == emailBd);
-    console.log(senha == senhaBd);
+    console.log(id);
 
     if (email == emailBd) {
         if (senha == senhaBd) {
-            return res
-                .status(200)
-                .json({ msg: "Sucesso na validação", validation: "true" });
+            return res.status(200).json({
+                msg: "Sucesso na validação",
+                validation: "true",
+                id_user: id_user,
+            });
         } else {
             return res
                 .status(400)
@@ -53,10 +51,19 @@ const validateUser = async (req, res) => {
     }
 };
 
+const findById = async (req, res) => {
+    const { id } = req.params;
+
+    const user = userServ.findById(id);
+
+    return res.status(200).json(user);
+};
+
 module.exports = {
     getAllUser,
     createUser,
     removeUser,
     updateUser,
     validateUser,
+    findById,
 };
