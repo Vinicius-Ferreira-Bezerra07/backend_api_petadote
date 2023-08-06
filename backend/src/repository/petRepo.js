@@ -39,11 +39,10 @@ const createPet = async (pet) => {
 };
 
 const removePet = async (id_pet) => {
-    console.log("1.3");
-    const query = "DELETE FROM pet WHERE id_pet = ?";
+    const query = "DELETE FROM pet WHERE id_pet = (?)";
 
     const removePet = await connection.execute(query, [id_pet]);
-    console.log("2.3");
+
     return removePet;
 };
 
@@ -54,6 +53,8 @@ const findPetIdUser = async (id) => {
         "SELECT * FROM pet WHERE id_user = (?)",
         [id]
     );
+
+    return pets;
 };
 
 module.exports = {

@@ -7,7 +7,11 @@ const getAllPet = async (_req, res) => {
     return res.status(200).json(pet);
 };
 
-const getById = async () => {};
+const getById = async (id) => {
+    const pet = await petServ.getById(id);
+
+    return res.status(200).json(pet);
+};
 
 const createPet = async (req, res) => {
     const addPet = await petServ.createPet(req.body);
