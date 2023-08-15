@@ -22,7 +22,11 @@ router.delete("/user/:id", userControl.removeUser);
 router.get("/user/findid/:id", userControl.findById);
 
 // Validação de Login
-router.post("/user/validate", userControl.validateUser);
+router.post(
+    "/user/validate",
+    userMiddleweres.validarValidacao,
+    userControl.validateUser
+);
 
 // Rotas para pets
 router.get("/pet", petControl.getAllPet);

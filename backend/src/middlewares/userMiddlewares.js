@@ -108,6 +108,57 @@ const validarCreateUser = (req, res, next) => {
     next();
 };
 
+const validarValidacao = (req, res, next) => {
+    const { body } = req;
+
+    const obrigatorio = [];
+    const vazio = [];
+
+    if (body.usuario === "") {
+        vazio.push("email");
+        // return res.status(400).json({
+        //     message: `O campo email é obrigatorio.`,
+        // });
+    }
+    if (body.usuario === undefined) {
+        obrigatorio.push("email");
+        // return res.status(400).json({
+        //     message: `O campo email é requirido.`,
+        // });
+    }
+    if (body.password === "") {
+        vazio.push("senha");
+        // return res.status(400).json({
+        //     message: `O campo senha é obrigatorio.`,
+        // });
+    }
+    if (body.password === undefined) {
+        obrigatorio.push("senha");
+        // return res.status(400).json({
+        //     message: `O campo senha é requirido.`,
+        // });
+    }
+
+    if (obrigatorio.length > 0) {
+        if (vazio.length > 0) {
+            return res.status(400).json({
+                message: `Os campos '${obrigatorio}' são obrigatorios. Os campos '${vazio}' não podem ser vazios.`,
+            });
+        } else {
+            return res.status(400).json({
+                message: `Os campos '${obrigatorio}' são obrigatorios.`,
+            });
+        }
+    } else if (vazio.length > 0) {
+        return res
+            .status(400)
+            .json({ message: `Os campos '${vazio}' não podem ser vazios` });
+    }
+
+    next();
+};
+
 module.exports = {
     validarCreateUser,
+    validarValidacao,
 };

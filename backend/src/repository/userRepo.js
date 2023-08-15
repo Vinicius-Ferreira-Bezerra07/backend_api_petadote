@@ -40,14 +40,16 @@ const removeUser = async (id) => {
 const updateUser = async (id) => {};
 
 // metodo para validar o login do usuario
-const validarUser = async (login) => {
-    const { email } = login;
+const validarUser = async (a) => {
+    const { usuario, password } = a;
 
-    const query = "SELECT id_user, email, senha FROM user WHERE email = (?)";
-    const [validarUser] = await connection.execute(query, [email]);
+    // console.log(login);
+    // console.log(password);
 
-    const { id_user } = validarUser;
-    console.log(id_user);
+    const query = "SELECT * FROM user WHERE email = (?)";
+    const [validarUser] = await connection.execute(query, [usuario]);
+
+    console.log(validarUser);
 
     return validarUser;
 };

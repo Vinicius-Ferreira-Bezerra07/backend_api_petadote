@@ -19,8 +19,8 @@ const removeUser = async (id) => {
     return remove;
 };
 
-const validarUser = async (login) => {
-    const dados = await userRepo.validarUser(login);
+const validarUser = async (usuario) => {
+    const dados = await userRepo.validarUser(usuario);
 
     return dados;
 };

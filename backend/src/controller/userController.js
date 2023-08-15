@@ -26,23 +26,35 @@ const removeUser = async (req, res) => {
 const updateUser = () => {};
 
 const validateUser = async (req, res) => {
+    const { usuario, password } = req.body;
+    console.log("Teste");
     const dados = await userServ.validarUser(req.body);
-    const { email, senha } = req.body;
-    const { id_user, emailBd = email, senhaBd = senha } = dados;
+    console.log("Teste");
+    if (dados.length > 0) {
+        const [{ email, senha }] = dados;
+        console.log("1");
 
-    console.log(id);
+        // console.log(login, password);
+        console.log(email, senha);
 
-    if (email == emailBd) {
-        if (senha == senhaBd) {
-            return res.status(200).json({
-                msg: "Sucesso na validação",
-                validation: "true",
-                id_user: id_user,
-            });
+        if (usuario == email) {
+            console.log("2");
+            if (password == senha) {
+                console.log("Sucesso");
+                return res.status(200).json({
+                    msg: "Sucesso na validação",
+                    validation: "true",
+                    dados,
+                });
+            } else {
+                return res
+                    .status(200)
+                    .json({ Erro: "Senha invalido.", validation: "false" });
+            }
         } else {
             return res
-                .status(400)
-                .json({ Erro: "Senha invalido.", validation: "false" });
+                .status(200)
+                .json({ Erro: "Email invalido.", validation: "false" });
         }
     } else {
         return res
