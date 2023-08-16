@@ -23,7 +23,7 @@ const removeUser = async (req, res) => {
     return res.status(204).json();
 };
 
-const updateUser = () => {};
+const updateUser = () => { };
 
 const validateUser = async (req, res) => {
     const { usuario, password } = req.body;
@@ -31,7 +31,7 @@ const validateUser = async (req, res) => {
     const dados = await userServ.validarUser(req.body);
     console.log("Teste");
     if (dados.length > 0) {
-        const [{ email, senha }] = dados;
+        const [{ email, senha, id_user }] = dados;
         console.log("1");
 
         // console.log(login, password);
@@ -44,7 +44,7 @@ const validateUser = async (req, res) => {
                 return res.status(200).json({
                     msg: "Sucesso na validação",
                     validation: "true",
-                    dados,
+                    id_user: id_user,
                 });
             } else {
                 return res
@@ -66,8 +66,8 @@ const validateUser = async (req, res) => {
 const findById = async (req, res) => {
     const { id } = req.params;
 
-    const user = userServ.findById(id);
-
+    const user = await userServ.findById(id);
+    console.log(user);
     return res.status(200).json(user);
 };
 

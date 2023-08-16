@@ -37,7 +37,7 @@ const removeUser = async (id) => {
 };
 
 // matodo para atualizar dados de usuario no banco
-const updateUser = async (id) => {};
+const updateUser = async (id) => { };
 
 // metodo para validar o login do usuario
 const validarUser = async (a) => {
