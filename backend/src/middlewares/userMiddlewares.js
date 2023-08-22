@@ -1,3 +1,5 @@
+// ___________________________________________________________ Cadastro de Usuario __________________________________________________________________________
+
 const validarCreateUser = (req, res, next) => {
     const { body } = req;
 
@@ -73,41 +75,11 @@ const validarCreateUser = (req, res, next) => {
             .status(400)
             .json({ message: `Os campos '${vazio}' não podem ser vazios` });
     }
-
-    // -----------------------------------------------------------------------------------------------------------------------------------------------
-
-    // const obrigatorio = [
-    //     nome,
-    //     email,
-    //     endereco,
-    //     cpf,
-    //     data_nascimento,
-    //     telefone,
-    //     senha
-    // ];
-
-    // for (const key in req.body) {
-    //     if (key === undefined) {
-    //         obrigatorios.push = key;
-    //     } else if (key === "") {
-    //         vazio.push = key;
-    //     }
-    // }
-
-    // body.map((i) => {
-    //     if (body.i === undefined) {
-    //         obrigatorios.push = "nome";
-    //     } else if (body.i === "") {
-    //         vazio.push = "nome";
-    //     }
-    // });
-
-    // console.log(req.body.name);
-
     // -----------------------------------------------------------------------------------------------------------------------------------------------
     next();
 };
 
+// _________________________________________ Validação de Usuaruio _____________________________________________________________________
 const validarValidacao = (req, res, next) => {
     const { body } = req;
 
@@ -116,27 +88,15 @@ const validarValidacao = (req, res, next) => {
 
     if (body.usuario === "") {
         vazio.push("email");
-        // return res.status(400).json({
-        //     message: `O campo email é obrigatorio.`,
-        // });
     }
     if (body.usuario === undefined) {
         obrigatorio.push("email");
-        // return res.status(400).json({
-        //     message: `O campo email é requirido.`,
-        // });
     }
     if (body.password === "") {
         vazio.push("senha");
-        // return res.status(400).json({
-        //     message: `O campo senha é obrigatorio.`,
-        // });
     }
     if (body.password === undefined) {
         obrigatorio.push("senha");
-        // return res.status(400).json({
-        //     message: `O campo senha é requirido.`,
-        // });
     }
 
     if (obrigatorio.length > 0) {

@@ -6,6 +6,7 @@ const express = require("express");
 const userControl = require("./controller/userController");
 const petControl = require("./controller/petController");
 const userMiddleweres = require("./middlewares/userMiddlewares");
+const petMiddlewares = require("./middlewares/petMiddlewares");
 
 // criar o arquivo e rotas
 const router = express.Router();
@@ -30,7 +31,7 @@ router.post(
 
 // Rotas para pets
 router.get("/pet", petControl.getAllPet);
-router.post("/pet", petControl.createPet);
+router.post("/pet", petMiddlewares.validarCreatePet, petControl.createPet);
 router.delete("/pet/:id_pet", petControl.removePet);
 router.get("/pet/findiduser/:id", petControl.findPetIdUser);
 
