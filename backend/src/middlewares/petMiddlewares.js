@@ -3,7 +3,7 @@ const validarCreatePet = (req, res, next) => {
     const { body } = req;
 
     let obrigatorios = [];
-    let vazios = [];
+    let vazio = [];
 
     // _____________ Verificação de Campos  _____________________________
     if (body.id_user === undefined) {
@@ -75,8 +75,8 @@ const validarCreatePet = (req, res, next) => {
     if (body.descricao === "") {
         vazio.push("descricao");
     }
-    console.log(obrigatorios);
-    console.log(vazio);
+    // console.log(obrigatorios);
+    // console.log(vazio);
 
     // _____________ Resultado da Verificação de Campos  _____________________________
 
@@ -97,4 +97,8 @@ const validarCreatePet = (req, res, next) => {
     }
 
     next();
+};
+
+module.exports = {
+    validarCreatePet,
 };
