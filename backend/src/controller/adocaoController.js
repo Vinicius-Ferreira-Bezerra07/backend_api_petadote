@@ -15,8 +15,8 @@ const getById = async (req, res) => {
 };
 
 const createAdocao = async (req, res) => {
-    const addAdocao = adocaoServ.createAdocao(req.body);
-
+    const addAdocao = await adocaoServ.createAdocao(req.body);
+    console.log(addAdocao);
     return res.status(200).json(addAdocao);
 };
 

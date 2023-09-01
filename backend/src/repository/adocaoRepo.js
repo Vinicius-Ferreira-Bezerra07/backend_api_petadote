@@ -7,19 +7,19 @@ const getAllAdocao = async () => {
 };
 
 const createAcocao = async (adocao) => {
-    const { id_adoc, id_pet, id_adotante, data_adocao } = adocao;
+    const { id_pet, id_adotante, status, data_adocao } = adocao;
 
     const query =
-        "INSERT INTO adocao (id_pet, id_adotante, data_adocao) VALUES (?, ?, ?)";
+        "INSERT INTO adocao (id_pet, id_adotante, status, data_adocao) VALUES (?, ?, ?, ?)";
 
-    const [crateAdocao] = await connection.execute(query, [
-        id_adoc,
+    const [createAdocao] = await connection.execute(query, [
         id_pet,
         id_adotante,
-        data_nascimento,
+        status,
+        data_adocao,
     ]);
 
-    return { insertId: createAcocao.insertId };
+    return { insertId: createAdocao.insertId };
 };
 
 const removeAdocao = async (id_adoc) => {

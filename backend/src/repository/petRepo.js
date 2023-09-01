@@ -65,16 +65,19 @@ module.exports = {
     findPetIdUser,
 };
 
-// id_pet int NOT NULL AUTO_INCREMENT,
-// id_user int NOT NULL,
-// nome varchar(50) NOT NULL,
-// raca varchar(30) NOT NULL,
-// especie VARCHAR(20) NOT NULL,
-// cor VARCHAR(10) NOT NULL,
-// status VARCHAR(20) NOT NULL,
-// peso int NOT NULL,
-// data_nascimento DATE NOT NULL,
-// sexo VARCHAR(14) NOT NULL,
-// descricao VARCHAR(100) NOT NULL,
-// PRIMARY KEY (id_pet),
-// Foreign Key (id_user) REFERENCES user (id_user)
+// CREATE TABLE
+//     pet (
+//         id_pet INT NOT NULL AUTO_INCREMENT,
+//         id_user INT NOT NULL,
+//         nome VARCHAR(50) NOT NULL,
+//         raca VARCHAR(30) NOT NULL,
+//         especie VARCHAR(20) NOT NULL,
+//         cor VARCHAR(10) NOT NULL,
+//         status VARCHAR(20) NOT NULL,
+//         peso FLOAT NOT NULL,
+//         data_nascimento DATE NOT NULL,
+//         sexo VARCHAR(14) NOT NULL,
+//         descricao VARCHAR(100) NOT NULL,
+//         PRIMARY KEY (id_pet),
+//         FOREIGN KEY (id_user) REFERENCES user (id_user)
+//     );
